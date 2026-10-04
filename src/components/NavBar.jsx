@@ -1,80 +1,109 @@
+import React from "react";
+import "./NavBar.css";
 import logo from "../assets/logo.png";
-import { NAV_LINKS } from "../assets/constant";
 
-const NavBar = () => {
+function NavBar() {
   return (
-    <header
-      style={{
-        width: "100%",
-        background: "#FAF8F3",
-        borderBottom: "1px solid #E8E1D5",
-        padding: "15px 40px",
-        boxSizing: "border-box",
-      }}
-    >
-      <nav
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        {/* LOGO */}
-        <a href="/">
-          <img
-            src={logo}
-            alt="Elements Wellness"
-            style={{
-              width: "150px",
-              height: "auto",
-              display: "block",
-            }}
-          />
+    <header className="navbar">
+
+      {/* LEFT — LOGO + ELEMENTS */}
+      <a href="/" className="navbar-brand">
+        <img
+          src={logo}
+          alt="Elements Wellness"
+        />
+
+        <span>ELEMENTS</span>
+      </a>
+
+
+      {/* CENTER — MENU */}
+      <nav className="navbar-menu">
+
+        <a href="/">Home</a>
+
+        <a href="/products">
+          Products
         </a>
 
-        {/* NAV LINKS */}
-        <ul
-          style={{
-            display: "flex",
-            gap: "35px",
-            listStyle: "none",
-            margin: 0,
-            padding: 0,
-          }}
-        >
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              
-              <a
-                href={link.href}
-                style={{
-                  textDecoration: "none",
-                  color: "#333",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                }}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <a href="/categories">
+          Categories
+        </a>
 
-        {/* SEARCH + CART */}
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-          }}
-        >
-          <button type="button">🔍</button>
-          <button type="button">🛒</button>
-        </div>
+        <a href="/about">
+          About
+        </a>
+
+        <a href="/contact">
+          Contact
+        </a>
+
       </nav>
+
+
+      {/* RIGHT — ACTIONS */}
+      <div className="navbar-actions">
+
+        {/* SEARCH */}
+        <button
+          className="nav-action"
+          aria-label="Search"
+        >
+          <svg viewBox="0 0 24 24">
+            <circle
+              cx="11"
+              cy="11"
+              r="7"
+            />
+            <path d="M20 20l-4-4" />
+          </svg>
+        </button>
+
+
+        {/* ACCOUNT */}
+        <button
+          className="nav-action"
+          aria-label="Account"
+        >
+          <svg viewBox="0 0 24 24">
+            <circle
+              cx="12"
+              cy="7"
+              r="4"
+            />
+            <path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7" />
+          </svg>
+        </button>
+
+
+        {/* CART */}
+        <button
+          className="nav-action cart-action"
+          aria-label="Cart"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M3 4h2l2.2 11h9.8l3-8H6" />
+            <circle
+              cx="10"
+              cy="20"
+              r="1.5"
+            />
+            <circle
+              cx="18"
+              cy="20"
+              r="1.5"
+            />
+          </svg>
+
+          <span className="cart-count">
+            0
+          </span>
+        </button>
+
+      </div>
+
     </header>
   );
-};
+}
 
 export default NavBar;
